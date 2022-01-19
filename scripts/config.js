@@ -6,11 +6,18 @@ function openPlayerConfig() {
 function closePlayerConfig() {
   playerConfigOverlayElement.style.display = "none";
   backdropElement.style.display = "none";
+  formElement.firstElementChild.classList.remove("error");
+  errorsOutputElement.textContent = "";
 }
 
 function savePlayerConfig(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
-  const enteredPlayerName = formData.get("player-name");
-  console.log(enteredPlayerName);
+  const enteredPlayerName = formData.get("player-name").trim();
+
+  if (!enteredPlayerName) {
+    event.target.firstElementChild.classList.add("error");
+    errorsOutputElement.textContent = "Are you dumb enter a valid name fool";
+    return;
+  }
 }
