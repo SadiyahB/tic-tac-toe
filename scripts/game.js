@@ -1,6 +1,6 @@
 function startNewGame() {
   if (players[0].name === "" || players[1].name === "") {
-    alert("dumbass can you read? Put the player names in");
+    alert("dumbass you canny read? Put the player names in");
     return;
   }
   activePlayerNameElement.textContent = players[activePlayer].name;
@@ -21,8 +21,20 @@ function selectGameField(event) {
   if (event.target.tagName !== "LI") {
     return;
   }
+  const selectedField = event.target;
+  const selectedColumn = selectedField.dataset.col - 1;
+  const selectedRow = selectedField.dataset.row - 1;
 
-  event.target.textContent = players[activePlayer].symbol;
-  event.target.classList.add("disabled");
+  if (gameData[selectedRow][selectedColumn] > 0) {
+      alert("Select an empty space")
+    return;
+  }
+
+  selectedField.textContent = players[activePlayer].symbol;
+  selectedField.classList.add("disabled");
+
+  gameData[selectedRow][selectedColumn] = activePlayer + 1;
+  console.log(gameData);
+
   switchPlayer();
 }

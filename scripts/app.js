@@ -1,3 +1,9 @@
+const gameData = [
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
+];
+
 let editedPlayer = 0;
 let activePlayer = 0;
 const players = [
@@ -33,4 +39,4 @@ startNewGameBtnElement.addEventListener("click", startNewGame);
 //   gameFieldElement.addEventListener("click", selectGameField);
 // }
 
-gameBoardElement.addEventListener("click",selectGameField);
+gameBoardElement.addEventListener("click", selectGameField);
